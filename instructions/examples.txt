@@ -1,0 +1,2 @@
+http://localhost:8080/simple-service-webapp/webapi/myresource
+http://localhost:8080/simple-service-webapp/webapi/myresource/users/Gary%20Black
