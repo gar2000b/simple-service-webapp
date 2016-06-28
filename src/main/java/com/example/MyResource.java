@@ -8,6 +8,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
@@ -24,6 +25,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.StreamingOutput;
 
+import com.example.model.AppID;
 import com.example.model.Track;
 import com.example.model.URL;
 
@@ -32,6 +34,8 @@ import com.example.model.URL;
  */
 @Path("myresource")
 public class MyResource {
+	
+	public static UUID APP_ID = UUID.randomUUID();
 	
 	@Context
 	private HttpServletResponse response;
@@ -105,6 +109,18 @@ public class MyResource {
 		track.setSinger("Metallica");
 
 		return track;
+
+	}
+	
+	@GET
+	@Path("/getAppID")
+	@Produces(MediaType.APPLICATION_JSON)
+	public AppID getAppIDInJSON() {
+
+		AppID appID = new AppID();
+		appID.setAppID(APP_ID.toString());
+
+		return appID;
 
 	}
 	
